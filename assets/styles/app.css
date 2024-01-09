@@ -1,9 +1,10 @@
+@import "./fonts.css";
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
 @layer base {
     body {
-        @apply bg-gray-100    
+        @apply bg-gray-50/50 font-iranyekanbakh
     }
 }
