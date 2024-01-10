@@ -2,9 +2,10 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+@import "./scroll.css";
 
 @layer base {
     body {
-        @apply bg-gray-50/50 font-iranyekanbakh
+        @apply bg-gray-50 font-iranyekanbakh
     }
 }
