@@ -2,15 +2,20 @@
 
 namespace App\Entity;
 
-use App\Repository\UserRepository;
+use App\Repository\AdminRepository;
+use App\Entity\Traits\TimableTrait;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-#[ORM\Entity(repositoryClass: UserRepository::class)]
-#[ORM\Table(name: '`users`')]
-class User implements UserInterface, PasswordAuthenticatedUserInterface
+#[ORM\Entity(repositoryClass: AdminRepository::class)]
+#[ORM\Table(name: '`admins`')]
+#[UniqueEntity(fields: 'username', message: 'inputs.username')]
+class Admin implements UserInterface, PasswordAuthenticatedUserInterface
 {
+    use TimableTrait;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -27,6 +32,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     #[ORM\Column]
     private ?string $password = null;
+
+    #[ORM\Column(
+        nullable: false,
+        columnDefinition: "ENUM('STATUS_PUBLISHED', 'STATUS_UNPUBLISHED') DEFAULT 'STATUS_PUBLISHED'"
+    )]
+    private ?string $status = null;
 
     public function getId(): ?int
     {
@@ -85,6 +96,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPassword(string $password): static
     {
         $this->password = $password;
+
+        return $this;
+    }
+
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(string $status): self {
+        $this->status = $status;
 
         return $this;
     }

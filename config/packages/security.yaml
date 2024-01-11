@@ -5,9 +5,9 @@ security:
     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
     providers:
         # used to reload user from session & other features (e.g. switch_user)
-        app_user_provider:
+        app_admin_provider:
             entity:
-                class: App\Entity\User
+                class: App\Entity\Admin
                 property: username
     firewalls:
         dev:
@@ -15,8 +15,8 @@ security:
             security: false
         main:
             lazy: true
-            provider: app_user_provider
-            custom_authenticator: App\Security\UserAuthticatorAuthenticator
+            provider: app_admin_provider
+            custom_authenticator: App\Security\AdminAuthenticator
             logout:
                 path: app_logout
                 # where to redirect after logout

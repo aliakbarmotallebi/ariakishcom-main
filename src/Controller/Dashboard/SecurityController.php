@@ -2,16 +2,31 @@
 
 namespace App\Controller\Dashboard;
 
+use App\Entity\Admin;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
 {
     #[Route(path: 'dashboard/login', name: 'dashboard_login')]
-    public function login(AuthenticationUtils $authenticationUtils): Response
+    public function login(AuthenticationUtils $authenticationUtils, UserPasswordHasherInterface $userPasswordHasherInterface, EntityManagerInterface $entityManager): Response
     {
+        // $user = new Admin;
+        // $plaintextPassword = '123456789';
+        // $user->setUsername('admin');
+        // $user->setPassword($userPasswordHasherInterface->hashPassword(
+        //     $user,
+        //     $plaintextPassword
+        // ));
+        // $user->setRoles(['ROLE_ADMIN']);
+
+        // $entityManager->persist($user);
+        // $entityManager->flush();
+
         if ($this->getUser()) {
             return $this->redirectToRoute('dashboard_admin');
         }
