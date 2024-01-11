@@ -16,7 +16,53 @@
 		{% endblock %}
 	</head>
 	<body>
-		<div class="overflow-hidden"> {% block body %}{% endblock %}
+		<div class="overflow-hidden">
+			<div class="w-full py-2 sticky bg-white z-20 top-0 border-b border-b-gray-200 items-center flex justify-between pl-4">
+				<div class="text-blue-600 flex items-center pr-10 gap-1">
+					<svg xmlns="http://www.w3.org/2000/svg" class="inline stroke-current" width="26" height="26" fill="none" viewbox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m8 4 1.3-1.625A1 1 0 0 1 10.081 2h3.839a1 1 0 0 1 .781.375L16 4v1a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1V4v0h0Z" clip-rule="evenodd"/>
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 4H6a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2m-8 7h8m-8 5h8"/>
+					</svg>
+					<p class="text-gray-600 text-xs font-semibold">
+						آیا از آخرین به روز رسانی سال 1402 اطلاع دارید؟
+						<span class="text-gray-400">
+							نمای کلی ما هم اکنون در یوتیوب در دسترس است ا...</span>
+					</p>
+					<button class="text-gray-600 hover:text-blue-600">
+						<svg xmlns="http://www.w3.org/2000/svg" class="inline stroke-current" width="20" height="20" fill="none" viewbox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5.997 15.001v3.002a3.001 3.001 0 0 0 3.002 3h9.004a3.001 3.001 0 0 0 3-3V5.997a3.001 3.001 0 0 0-3-3H8.999a3.001 3.001 0 0 0-3.002 3V9"/>
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15.001 15.001 12 12 8.999M2.996 12h12.005"/>
+						</svg>
+					</button>
+				</div>
+				<div class="flex px-4 gap-5 items-center relative">
+					<div class="rounded-full w-8 h-8 bg-blue-500 text-white flex justify-center items-center">
+						<svg xmlns="http://www.w3.org/2000/svg" class="inline stroke-current" width="20" height="20" fill="none" viewbox="0 0 24 24">
+							<circle cx="12" cy="12" r="9.004" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+							<rect width="6.003" height="6.503" x="8.999" y="6.748" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" rx="3"/>
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5.633 18.367v0a8.074 8.074 0 0 1 5.71-2.365h1.213c1.594 0 3.153.472 4.48 1.356l1.4.933"/>
+						</svg>
+					</div>
+					<div>
+						<p class="text-blue-600 text-xs">مدیر</p>
+						<div class="flex text-xs text-gray-600 font-bold items-center gap-1">
+							<p>
+								علی اکبرمطلبی
+							</p>
+							<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="none" viewbox="0 0 24 24">
+								<path stroke="#323232" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m8 10 4 4 4-4"/>
+							</svg>
+						</div>
+					</div>
+					<div class="flex items-center relative">
+						<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="none" viewbox="0 0 24 24">
+							<path stroke="#323232" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 20.003a2.5 2.5 0 0 1-4 0m-4.003-7.521V9A6.003 6.003 0 0 1 12 2.997v0a6.002 6.002 0 0 1 6.003 6.002v3.483h-.005l1.377 1.378a2.134 2.134 0 0 1-1.51 3.643H6.134a2.134 2.134 0 0 1-1.51-3.643l1.377-1.378"/>
+						</svg>
+						<div class="w-2 h-2 bg-green-400 rounded-full absolute left-0 top-0 mt-px ml-1 border border-white"></div>
+					</div>
+				</div>
 			</div>
-		</body>
-	</html>
+			{% block body %}{% endblock %}
+		</div>
+	</body>
+</html></body></html>

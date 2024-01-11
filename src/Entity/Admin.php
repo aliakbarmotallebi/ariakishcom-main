@@ -25,19 +25,20 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $username = null;
 
     #[ORM\Column]
-    private array $roles = [];
-
-    /**
-     * @var string The hashed password
-     */
-    #[ORM\Column]
     private ?string $password = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $fullname = null;
+
+    #[ORM\Column]
+    private array $roles = [];
 
     #[ORM\Column(
         nullable: false,
         columnDefinition: "ENUM('STATUS_PUBLISHED', 'STATUS_UNPUBLISHED') DEFAULT 'STATUS_PUBLISHED'"
     )]
     private ?string $status = null;
+
 
     public function getId(): ?int
     {
@@ -118,5 +119,17 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getFullname(): ?string
+    {
+        return $this->fullname;
+    }
+
+    public function setFullname(string $fullname): static
+    {
+        $this->fullname = $fullname;
+
+        return $this;
     }
 }

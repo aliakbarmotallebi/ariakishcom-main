@@ -9,18 +9,29 @@ security:
             entity:
                 class: App\Entity\Admin
                 property: username
+        # used to reload user from session & other features (e.g. switch_user)
+        app_user_provider:
+            entity:
+                class: App\Entity\Customer
+                property: mobile
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-        main:
-            lazy: true
+
+        admin_secured_area:
             provider: app_admin_provider
             custom_authenticator: App\Security\AdminAuthenticator
             logout:
+                path: dashboard_logout
+                target: main_page
+        main:
+            lazy: true
+            provider: app_user_provider
+            custom_authenticator: App\Security\CustomerAuthenticator
+            logout:
                 path: app_logout
-                # where to redirect after logout
-                # target: app_any_route
+                target: main_page
 
             remember_me:
                 secret: '%kernel.secret%'

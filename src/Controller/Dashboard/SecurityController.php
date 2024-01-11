@@ -22,6 +22,7 @@ class SecurityController extends AbstractController
         //     $user,
         //     $plaintextPassword
         // ));
+        // $user->setFullname('علی اکبر مطلبی');
         // $user->setRoles(['ROLE_ADMIN']);
 
         // $entityManager->persist($user);
