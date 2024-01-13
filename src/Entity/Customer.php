@@ -9,6 +9,8 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: CustomerRepository::class)]
+#[ORM\Table(name: '`customers`')]
+#[ORM\HasLifecycleCallbacks]
 class Customer implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -42,6 +44,12 @@ class Customer implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 10, nullable: true)]
     private ?string $nationalCode = null;
+
+    #[ORM\Column(
+        options: ['default' => 'STATUS_UNPUBLISHED'],
+        columnDefinition: "ENUM('STATUS_PUBLISHED', 'STATUS_UNPUBLISHED') NOT NULL DEFAULT 'STATUS_UNPUBLISHED'"
+    )]
+    private ?string $status = 'STATUS_UNPUBLISHED';
 
     public function getId(): ?int
     {
@@ -169,6 +177,18 @@ class Customer implements UserInterface, PasswordAuthenticatedUserInterface
     public function setNationalCode(?string $nationalCode): static
     {
         $this->nationalCode = $nationalCode;
+
+        return $this;
+    }
+
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(string $status): static
+    {
+        $this->status = $status;
 
         return $this;
     }

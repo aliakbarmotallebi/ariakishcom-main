@@ -12,6 +12,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 #[ORM\Entity(repositoryClass: AdminRepository::class)]
 #[ORM\Table(name: '`admins`')]
 #[UniqueEntity(fields: 'username', message: 'inputs.username')]
+#[ORM\HasLifecycleCallbacks]
 class Admin implements UserInterface, PasswordAuthenticatedUserInterface
 {
     use TimableTrait;
@@ -34,10 +35,10 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
     private array $roles = [];
 
     #[ORM\Column(
-        nullable: false,
-        columnDefinition: "ENUM('STATUS_PUBLISHED', 'STATUS_UNPUBLISHED') DEFAULT 'STATUS_PUBLISHED'"
+        options: ['default' => 'STATUS_UNPUBLISHED'],
+        columnDefinition: "ENUM('STATUS_PUBLISHED', 'STATUS_UNPUBLISHED') NOT NULL DEFAULT 'STATUS_UNPUBLISHED'"
     )]
-    private ?string $status = null;
+    private ?string $status = 'STATUS_PUBLISHED';
 
 
     public function getId(): ?int

@@ -6,8 +6,11 @@ use App\Entity\Traits\TimableTrait;
 use App\Repository\ContactRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ContactRepository::class)]
+#[ORM\Table(name: '`contacts`')]
+#[ORM\HasLifecycleCallbacks]
 class Contact
 {
     use TimableTrait;
@@ -21,16 +24,18 @@ class Contact
     private ?string $fullname = null;
 
     #[ORM\Column(length: 11)]
+    #[Assert\NotBlank]
+    #[Assert\Regex('/^09[0-9]{9}$/')]
     private ?string $phoneNumber = null;
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $message = null;
     
     #[ORM\Column(
-        nullable: false,
-        columnDefinition: "ENUM('STATUS_PUBLISHED', 'STATUS_UNPUBLISHED') DEFAULT 'STATUS_PUBLISHED'"
+        options: ['default' => 'STATUS_UNPUBLISHED'],
+        columnDefinition: "ENUM('STATUS_PUBLISHED', 'STATUS_UNPUBLISHED') NOT NULL DEFAULT 'STATUS_UNPUBLISHED'"
     )]
-    private ?string $status = null;
+    private ?string $status = 'STATUS_UNPUBLISHED';
 
     public function getId(): ?int
     {
