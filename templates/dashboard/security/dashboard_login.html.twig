@@ -19,7 +19,7 @@
 				</p>
 			</div>
 			{% if error %}
-				<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+				<div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 			{% endif %}
 			<form method="post" class="flex flex-col gap-10">
 				<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
