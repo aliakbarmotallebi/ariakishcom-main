@@ -5,56 +5,41 @@
 {% endblock %}
 
 {% block body %}
-	{% include "dashboard/partials/_sidebar.html.twig" %}
-	<div class="mr-[325px] overflow-y-auto">
-		<div class="px-52 py-14">
-			<div class="flex justify-between items-center">
-				<div class="flex flex-col gap-1">
-					<h1 class="text-slate-600 font-bold text-2xl">
-						مدیریت گرامی
-					</h1>
-					<p class="text-slate-400 font-semibold">
-						به پنل پیشخوان حساب خود خوش آمدید.
-					</p>
-				</div>
-				<div class="flex gap-5 items-center">
-					<button class="flex gap-4 px-4 py-2 bg-white hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-colors text-blue-600 border border-blue-300 rounded items-center">
-						<svg xmlns="http://www.w3.org/2000/svg" class="inline stroke-current" width="18" height="18" fill="none" viewbox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 15.002v6.002m2.334-2.334L11 21.004 8.666 18.67m-2.669-2.926A7.002 7.002 0 1 1 16.712 8.01a4.5 4.5 0 0 1-.21 8.993h-.5"/>
-						</svg>
-
-						<span class="text-sm font-bold">
-							درخواست تعمیر
-						</span>
-					</button>
-					<button class="flex gap-4 px-4 py-2 bg-white hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-colors text-blue-600 border border-blue-300 rounded items-center">
-						<svg xmlns="http://www.w3.org/2000/svg" class="inline stroke-current" width="18" height="18" fill="none" viewbox="0 0 24 24">
-							<rect width="18.008" height="18.008" x="2.996" y="2.997" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" rx="3"/>
-							<rect width="3.501" height="3.501" x="6.998" y="6.998" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" rx=".5"/>
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13.5 6.998h3.502M13.5 10.5h3.502m-10.004 3h10.004M6.998 17.002h10.004"/>
-						</svg>
-						<span class="text-sm font-bold">
-							تنظیمات سایت
-						</span>
-					</button>
-					<button class="text-white px-2 py-2 rounded flex justify-center items-center bg-blue-600 hover:bg-blue-700 transition-colors">
-						<svg xmlns="http://www.w3.org/2000/svg" class="inline stroke-current" width="20" height="20" fill="none" viewbox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v8m4-4H8"/>
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 21v0a9 9 0 0 1-9-9v0a9 9 0 0 1 9-9v0a9 9 0 0 1 9 9v0a9 9 0 0 1-9 9Z" clip-rule="evenodd"/>
-						</svg>
-					</button>
-				</div>
-			</div>
-			{# body #}
-		</div>
-		<div class="border-t mb-1 mt-5 bg-white items-center p-10 py-6 flex justify-between">
-			<p class="text-gray-400 font-semibold">
-				سیستم مدیریت محتوا اختصاصی
-				<span class="hover:text-blue-500 duration-300">
-					شرکت آریاکیش
-				</span>
-				مرکز گارانتی
+	<div class="flex justify-between items-center">
+		<div class="flex flex-col gap-1">
+			<h1 class="text-slate-600 font-bold text-2xl">
+				مدیریت گرامی
+			</h1>
+			<p class="text-slate-400 font-semibold">
+				به پنل پیشخوان حساب خود خوش آمدید.
 			</p>
+		</div>
+		<div class="flex gap-5 items-center">
+			<button class="flex gap-4 px-4 py-2 bg-white hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-colors text-blue-600 border border-blue-300 rounded items-center">
+				<svg xmlns="http://www.w3.org/2000/svg" class="inline stroke-current" width="18" height="18" fill="none" viewbox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 15.002v6.002m2.334-2.334L11 21.004 8.666 18.67m-2.669-2.926A7.002 7.002 0 1 1 16.712 8.01a4.5 4.5 0 0 1-.21 8.993h-.5"/>
+				</svg>
+
+				<span class="text-sm font-bold">
+					درخواست تعمیر
+				</span>
+			</button>
+			<button class="flex gap-4 px-4 py-2 bg-white hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-colors text-blue-600 border border-blue-300 rounded items-center">
+				<svg xmlns="http://www.w3.org/2000/svg" class="inline stroke-current" width="18" height="18" fill="none" viewbox="0 0 24 24">
+					<rect width="18.008" height="18.008" x="2.996" y="2.997" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" rx="3"/>
+					<rect width="3.501" height="3.501" x="6.998" y="6.998" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" rx=".5"/>
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13.5 6.998h3.502M13.5 10.5h3.502m-10.004 3h10.004M6.998 17.002h10.004"/>
+				</svg>
+				<span class="text-sm font-bold">
+					تنظیمات سایت
+				</span>
+			</button>
+			<button class="text-white px-2 py-2 rounded flex justify-center items-center bg-blue-600 hover:bg-blue-700 transition-colors">
+				<svg xmlns="http://www.w3.org/2000/svg" class="inline stroke-current" width="20" height="20" fill="none" viewbox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v8m4-4H8"/>
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 21v0a9 9 0 0 1-9-9v0a9 9 0 0 1 9-9v0a9 9 0 0 1 9 9v0a9 9 0 0 1-9 9Z" clip-rule="evenodd"/>
+				</svg>
+			</button>
 		</div>
 	</div>
 {% endblock %}
