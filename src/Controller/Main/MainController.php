@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Main;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,24 +14,10 @@ class MainController extends AbstractController
         return $this->render('main/index.html.twig');
     }
 
-    #[Route('/careers', name: 'careers_page')]
-    public function cooperation(): Response
-    {
-        return $this->render('main/pages/careers.html.twig');
-    }
-
-    #[Route('/contact-us', name: 'contactus_page')]
-    public function contactUs(): Response
-    {
-        return $this->render('main/pages/contact-us.html.twig');
-    }
-
     #[Route('/about-us', name: 'aboutus_page')]
     public function aboutUs(): Response
     {
         return $this->render('main/pages/about-us.html.twig');
     }
-
-    
 
 }
