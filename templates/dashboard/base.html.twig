@@ -59,10 +59,11 @@
 							</div>
 						</div>
 						<div class="flex items-center relative">
-							<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="none" viewbox="0 0 24 24">
-								<path stroke="#323232" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 20.003a2.5 2.5 0 0 1-4 0m-4.003-7.521V9A6.003 6.003 0 0 1 12 2.997v0a6.002 6.002 0 0 1 6.003 6.002v3.483h-.005l1.377 1.378a2.134 2.134 0 0 1-1.51 3.643H6.134a2.134 2.134 0 0 1-1.51-3.643l1.377-1.378"/>
-							</svg>
-							<div class="w-2 h-2 bg-green-400 rounded-full absolute left-0 top-0 mt-px ml-1 border border-white"></div>
+							<a href="{{ path('dashboard_logout') }}">
+								<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 hover:text-red-600 transition-all delay-150" viewbox="0 0 24 24" fill="currentColor">
+									<path d="M5 11H13V13H5V16L0 12L5 8V11ZM3.99927 18H6.70835C8.11862 19.2447 9.97111 20 12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C9.97111 4 8.11862 4.75527 6.70835 6H3.99927C5.82368 3.57111 8.72836 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C8.72836 22 5.82368 20.4289 3.99927 18Z"></path>
+								</svg>
+							</a>
 						</div>
 					</div>
 				</div>
