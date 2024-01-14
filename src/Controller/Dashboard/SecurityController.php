@@ -12,7 +12,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
 {
-    #[Route(path: 'dashboard/login', name: 'dashboard_login')]
+    #[Route(path: 'login', name: 'dashboard_login')]
     public function login(AuthenticationUtils $authenticationUtils, UserPasswordHasherInterface $userPasswordHasherInterface, EntityManagerInterface $entityManager): Response
     {
         // $user = new Admin;
@@ -31,6 +31,7 @@ class SecurityController extends AbstractController
         if ($this->getUser()) {
             return $this->redirectToRoute('dashboard_admin');
         }
+
         $error = $authenticationUtils->getLastAuthenticationError();
 
         return $this->render('dashboard/security/dashboard_login.html.twig', [
