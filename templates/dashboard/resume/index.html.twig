@@ -1,0 +1,91 @@
+{% extends 'dashboard/base.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	مدیریت مدیران
+{% endblock %}
+
+{% block body %}
+	<div class="flex justify-between py-4 items-center">
+		<div class="font-bold text-[27px] flex flex-col gap-1">
+			<p class="text-slate-700">
+				مدیریت رزومه ها
+			</p>
+			<p class="text-base text-gray-400 font-semibold">
+				شما در مجموع 1261 رزومه دارید.
+			</p>
+		</div>
+	</div>
+	<div class="w-full border bg-white">
+		<div class="px-4 py-5 flex justify-between border-b">
+			<div class="flex gap-3 items-center">
+				<p class="text-xl text-slate-600 font-bold">همه رزومه ها</p>
+			</div>
+			<div class="flex gap-2 items-center">
+				<div class="h-full w-px bg-gray-200"></div>
+
+				<div x-data="{open:false}" class="relative">
+					<button @click="open = !open" @mousedown.outside="open = false" class="text-slate-600 rounded-full hover:bg-gray-100 p-2 transition-all">
+						<svg xmlns="http://www.w3.org/2000/svg" class="inline stroke-current" width="20" height="20" fill="none" viewbox="0 0 24 24">
+							<circle cx="11.86" cy="12.001" r="3.5" stroke="#323232" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></circle>
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m11.86 12 2.84 2.03M11.86 12V8.5"></path>
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5.25 12c0 .297.027.594.063.882l-1.588 1.242a.898.898 0 0 0-.224 1.156l1.412 2.443a.898.898 0 0 0 1.112.384l1.422-.571a.912.912 0 0 1 .846.099c.22.146.448.28.684.4.27.137.466.382.509.682l.217 1.513c.063.442.442.77.888.77h2.817a.897.897 0 0 0 .888-.77l.217-1.512a.918.918 0 0 1 .512-.683c.235-.118.462-.251.681-.396a.915.915 0 0 1 .85-.102l1.419.57a.899.899 0 0 0 1.112-.384l1.412-2.443a.898.898 0 0 0-.224-1.156l-1.588-1.242c.036-.288.063-.585.063-.882 0-.297-.027-.594-.063-.882l1.588-1.242a.898.898 0 0 0 .224-1.156l-1.412-2.443a.898.898 0 0 0-1.112-.384l-1.419.57a.918.918 0 0 1-.85-.102 6.597 6.597 0 0 0-.681-.396.918.918 0 0 1-.512-.683l-.216-1.512a.897.897 0 0 0-.888-.77h-2.817a.897.897 0 0 0-.888.77l-.218 1.514a.92.92 0 0 1-.509.682c-.236.12-.464.255-.684.4a.917.917 0 0 1-.847.098l-1.421-.571a.898.898 0 0 0-1.112.384L3.501 8.72a.898.898 0 0 0 .224 1.156l1.588 1.242A7.138 7.138 0 0 0 5.25 12v0Z" clip-rule="evenodd"></path>
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m11.86 12-2.84 2.03"></path>
+						</svg>
+					</button>
+					<div class="bg-white border shadow rounded-md max-w-[320px] min-w-[320px] w-full absolute left-full top-full" x-transition="" x-show="open" style="display: none;">
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi																																                  architecto dolore! Cum, maiores!
+					</div>
+				</div>
+			</div>
+		</div>
+		<table class="w-full table">
+			<thead class="table-header-group">
+				<tr class="text-xs text-gray-400 border-b">
+					<th class="font-semibold py-3">شناسه</th>
+					<th class="font-semibold py-3">نام کامل</th>
+					<th class="font-semibold py-3">نام پدر</th>
+					<th class="font-semibold py-3">
+						شماره همراه
+					</th>
+					<th class="font-semibold py-3">
+						تاریخ ایجاد درخواست
+					</th>
+					<th class="font-semibold py-3">وضعیت</th>
+					<th class="font-semibold py-3"></th>
+				</tr>
+			</thead>
+			<tbody></tbody>
+		</tbody>
+	</table>
+	<div class="py-5">
+		<div class="px-7 flex justify-between bg-white">
+			<div class="border flex text-sm font-semibold w-fit rounded">
+				<div class="p-2 text-slate-500 font-semibold border-l flex justify-center items-center">
+					قبلی
+				</div>
+				<div class="p-2 text-slate-500 font-semibold border-l px-5 flex justify-center items-center">
+					1
+				</div>
+				<div class="p-2 text-slate-500 font-semibold border-l px-5 flex justify-center items-center">
+					2
+				</div>
+				<div class="p-2 text-slate-500 border-l flex justify-center items-center">
+					<svg xmlns="http://www.w3.org/2000/svg" class="inline stroke-current" width="24" height="24" fill="none" viewbox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18.503 12a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0M12.5 12a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m-6.002 0a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0"></path>
+					</svg>
+				</div>
+				<div class="p-2 text-slate-500 font-semibold border-l px-5 flex justify-center items-center">
+					6
+				</div>
+				<div class="p-2 text-slate-500 font-semibold border-l px-5 flex justify-center items-center">
+					7
+				</div>
+				<div class="p-2 text-slate-500 font-semibold flex justify-center items-center">
+					بعدی
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>{% endblock %}

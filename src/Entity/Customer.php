@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Enum\Status;
 use App\Repository\CustomerRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -45,11 +46,14 @@ class Customer implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 10, nullable: true)]
     private ?string $nationalCode = null;
 
-    #[ORM\Column(
-        options: ['default' => 'STATUS_UNPUBLISHED'],
-        columnDefinition: "ENUM('STATUS_PUBLISHED', 'STATUS_UNPUBLISHED') NOT NULL DEFAULT 'STATUS_UNPUBLISHED'"
-    )]
-    private ?string $status = 'STATUS_UNPUBLISHED';
+
+    #[ORM\Column(type: Types::STRING, enumType: Status::class)]
+    private Status $status;
+
+    public function __construct()
+    {
+        $this->status = Status::Published;
+    }
 
     public function getId(): ?int
     {
