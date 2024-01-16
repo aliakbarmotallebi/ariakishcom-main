@@ -11,17 +11,16 @@
 {% endblock %}
 
 {% block form_row %}
-	{% set row_attr = row_attr|merge({ class: row_attr.class|default(row_attr|default('form-row')) }) %}
+	{% set row_attr = row_attr|merge({ class: row_attr.class|default('') ~ ' form-row' }) %}
 	<div {% with {attr: row_attr} %} {{ block('attributes') }} {% endwith %}>
 		{{ form_label(form) }}
 		{{ form_widget(form) }}
 		{{ form_errors(form) }}
-		{{ form_help(form) }}
 	</div>
 {% endblock form_row %}
 
 {% block widget_attributes %}
-	{% set attr = attr|merge({ class: attr.class|default('widget-attributes') ~ (errors|length > 0 ? '' ~ ' error-input ') })   %}
+	{% set attr = attr|merge({ class: attr.class|default('') ~ ' widget-attributes ' ~ (errors|length > 0 ? '' ~ ' error-input ') })   %}
 
 	{{ parent() }}
 {% endblock %}
@@ -38,15 +37,18 @@
 
 {% block checkbox_label %}
 	{% set label_attr = label_attr|merge({ class: label_attr.class|default(label_class|default('checkbox-label')) }) %}
-	{{ block('form_label') }}
+	<{{element|default('label')}} {% if label_attr %} {% with { attr: label_attr } %} {{ block('attributes') }} {% endwith %} {% endif %}>
+		{{ block('form_label_content') }}
+	</{{element|default('label')}}>
 {% endblock %}
-
-{% block checkbox_widget %}
-	{% set widget_class = widget_class|default('checkbox-widget') %}
-	{{ parent() }}
-{% endblock checkbox_widget %}
-
-{% block radio_widget %}
-	{% set widget_class = widget_class|default('mr-2') %}
-	{{ parent() }}
-{% endblock radio_widget %}
+{% block choice_widget_expanded %}
+	{% set attr = attr|merge({ class: attr.class|default('flex items-center space-x-3 space-x-reverse mt-2') }) %}
+	<div {{ block('widget_container_attributes') }}>
+		{% for child in form %}
+			<div class="flex items-center gap-3">
+				{{ form_label(child) }}
+				{{ form_widget(child) }}
+			</div>
+		{% endfor %}
+	</div>
+{% endblock choice_widget_expanded %}

@@ -35,156 +35,107 @@
 					مشخصات فردی
 				</h1>
 				<div class="p-5">
-					<div class="flex gap-3">
+					<div class="grid grid-cols-1 md:grid-cols-5 gap-3">
 						{{ form_row(form.fullname) }}
 						{{ form_row(form.fatherName) }}
 						{{ form_row(form.birthDate) }}
 						{{ form_row(form.birthCertificateNumber) }}
 						{{ form_row(form.nationalCode) }}
 					</div>
-					<div class="flex gap-3">
-						<div class="flex flex-col mb-6 last:mb-0 w-1/3">
-							<label class="text-gray-500 mr-4 text-sm mb-1 required" for="contact_form_fullname">تاریخ تولد</label><input type="date" id="contact_form_fullname" name="contact_form[fullname]" required="required" placeholder="" class="bg-white sm:h-12 h-10 text-sm text-dark-550 focus:font-bold placeholder:text-gray-500 rounded-md border border-gray-200 px-4"/>
-						</div>
-
-						<div class="flex flex-col mb-6 last:mb-0 w-1/3">
-							<label class="text-gray-500 mr-4 text-sm mb-1 required" for="contact_form_fullname">
-								ملیت
-							</label><input type="text" id="contact_form_fullname" name="contact_form[fullname]" required="required" placeholder=" " class="bg-white sm:h-12 h-10 text-sm text-dark-550 focus:font-bold placeholder:text-gray-500 rounded-md border border-gray-200 px-4"/>
-						</div>
-
-						<div class="flex flex-col mb-6 last:mb-0 w-[32.7%]">
-							<label class="text-gray-500 mr-4 text-sm mb-1 required" for="contact_form_fullname">
-								مذهب
-							</label><input type="text" id="contact_form_fullname" name="contact_form[fullname]" required="required" placeholder=" " class="bg-white sm:h-12 h-10 text-sm text-dark-550 focus:font-bold placeholder:text-gray-500 rounded-md border border-gray-200 px-4"/>
-						</div>
+					<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+						{{ form_row(form.address) }}
+						{{ form_row(form.phoneNumber) }}
+						{{ form_row(form.tel) }}
 					</div>
 					<i class="w-full h-px bg-gray-200 mb-3"></i>
 					<div class="flex gap-3">
 						<div class="flex flex-col mb-6 last:mb-0 w-[32.7%]">
-							<h4 class="text-gray-500 mr-4 text-sm mb-1 required" for="contact_form_fullname">
-								وضعیت تاهل
-							</h4>
 							<div class="flex py-2.5">
-								<div class="flex items-center gap-3">
-									<label for="contact_form_fullname " class="text-gray-500 mr-4 text-sm mb-1 required">
-										مجرد
-									</label>
-									<input type="checkbox" id="contact_form_fullname" name="contact_form[fullname]"/>
-								</div>
-								<div class="flex items-center gap-3">
-									<label for="contact_form_fullname " class="text-gray-500 mr-4 text-sm mb-1 required">
-										متاهل
-									</label>
-									<input type="checkbox" id="contact_form_fullname" name="contact_form[fullname]"/>
-								</div>
+								{{ form_row(form.maritalStatus) }}
 							</div>
 						</div>
 						<div class="flex flex-col mb-6 last:mb-0 w-[32.7%]">
-							<label class="text-gray-500 mr-4 text-sm mb-1 required" for="contact_form_fullname">
-								وضعیت سکونت
-							</label>
 							<div class="flex py-2.5">
-								<div class="flex items-center gap-3">
-									<label for="contact_form_fullname " class="text-gray-500 mr-4 text-sm mb-1 required">
-										شخصی
-									</label>
-									<input type="checkbox" id="contact_form_fullname" name="contact_form[fullname]"/>
-								</div>
-								<div class="flex items-center gap-3">
-									<label for="contact_form_fullname " class="text-gray-500 mr-4 text-sm mb-1 required">
-										استیجاری
-									</label>
-									<input type="checkbox" id="contact_form_fullname" name="contact_form[fullname]"/>
-								</div>
+								{{ form_row(form.residentialStatus) }}
 							</div>
 						</div>
 					</div>
 					<div class="flex gap-3">
-						<div class="flex flex-col mb-6 last:mb-0 w-1/3">
-							<label class="text-gray-500 mr-4 text-sm mb-1 required" for="contact_form_fullname">
-								نشانی منزل
-							</label><input type="text" id="contact_form_fullname" name="contact_form[fullname]" required="required" placeholder=" " class="bg-white sm:h-12 h-10 text-sm text-dark-550 focus:font-bold placeholder:text-gray-500 rounded-md border border-gray-200 px-4"/>
-						</div>
-						<div class="flex flex-col mb-6 last:mb-0 w-1/3">
-							<label class="text-gray-500 mr-4 text-sm mb-1 required" for="contact_form_fullname">
-								تلفن
-							</label><input type="text" id="contact_form_fullname" name="contact_form[fullname]" required="required" placeholder=" " class="bg-white sm:h-12 h-10 text-sm text-dark-550 focus:font-bold placeholder:text-gray-500 rounded-md border border-gray-200 px-4"/>
-						</div>
-						<div class="flex flex-col mb-6 last:mb-0 w-1/3">
-							<label class="text-gray-500 mr-4 text-sm mb-1 required" for="contact_form_fullname">
-								همراه
-							</label><input type="text" id="contact_form_fullname" name="contact_form[fullname]" required="required" placeholder=" " class="bg-white sm:h-12 h-10 text-sm text-dark-550 focus:font-bold placeholder:text-gray-500 rounded-md border border-gray-200 px-4"/>
-						</div>
-					</div>
-					<i class="w-full h-px bg-gray-200 mb-3"></i>
-					<div class="flex gap-3">
-						<div class="flex flex-col mb-6 last:mb-0 w-1/4">
-							<label class="text-gray-500 mr-4 text-sm mb-1 required" for="contact_form_fullname">
-								مدرک تحصیلی
-							</label><input type="text" id="contact_form_fullname" name="contact_form[fullname]" required="required" placeholder=" " class="bg-white sm:h-12 h-10 text-sm text-dark-550 focus:font-bold placeholder:text-gray-500 rounded-md border border-gray-200 px-4"/>
-						</div>
-						<div class="flex flex-col mb-6 last:mb-0 w-1/4">
-							<label class="text-gray-500 mr-4 text-sm mb-1 required" for="contact_form_fullname">
-								تاریخ اخرین مدرک
-							</label><input type="text" id="contact_form_fullname" name="contact_form[fullname]" required="required" placeholder=" " class="bg-white sm:h-12 h-10 text-sm text-dark-550 focus:font-bold placeholder:text-gray-500 rounded-md border border-gray-200 px-4"/>
-						</div>
-						<div class="flex flex-col mb-6 last:mb-0 w-1/4">
-							<label class="text-gray-500 mr-4 text-sm mb-1 required" for="contact_form_fullname">
-								نام دوره های دیگر که گذراندید
-							</label><input type="text" id="contact_form_fullname" name="contact_form[fullname]" required="required" placeholder=" " class="bg-white sm:h-12 h-10 text-sm text-dark-550 focus:font-bold placeholder:text-gray-500 rounded-md border border-gray-200 px-4"/>
-						</div>
-						<div class="flex flex-col mb-6 last:mb-0 w-1/4">
-							<label class="text-gray-500 mr-4 text-sm mb-1 required" for="contact_form_fullname">
-								به کدام زبان خارجی آشنایی دارید؟
-							</label><input type="text" id="contact_form_fullname" name="contact_form[fullname]" required="required" placeholder="" class="bg-white sm:h-12 h-10 text-sm text-dark-550 focus:font-bold placeholder:text-gray-500 rounded-md border border-gray-200 px-4"/>
-						</div>
-					</div>
-					<i class="w-full h-px bg-gray-200 mb-3"></i>
-					<div class="flex flex-col mb-6 last:mb-0 w-2/5">
-						<label class="text-gray-500 mr-4 text-sm mb-1 required" for="contact_form_fullname">
-							شغلی که به شما واگذار خواهد شد . تضمین دارد . مایل به ارائه تضمین
-																																																																																																																																																																																																																																													              هستید؟
-						</label>
-						<div class="flex py-2.5">
-							<div class="flex items-center gap-3">
-								<label for="contact_form_fullname " class="text-gray-500 mr-4 text-sm mb-1 required">
-									بلی
-								</label>
-								<input type="checkbox" id="contact_form_fullname" name="contact_form[fullname]"/>
+						<div class="flex flex-col mb-6 last:mb-0 w-[32.7%]">
+							<div class="flex py-2.5">
+								{{ form_row(form.gender) }}
 							</div>
-							<div class="flex items-center gap-3">
-								<label for="contact_form_fullname " class="text-gray-500 mr-4 text-sm mb-1 required">
-									خیر
-								</label>
-								<input type="checkbox" id="contact_form_fullname" name="contact_form[fullname]"/>
+						</div>
+						<div class="flex flex-col mb-6 last:mb-0 w-[32.7%]">
+							<div class="flex py-2.5">
+								{{ form_row(form.militaryStatus) }}
 							</div>
 						</div>
 					</div>
 					<i class="w-full h-px bg-gray-200 mb-3"></i>
-					<div class="flex gap-3">
-						<div class="flex flex-col mb-6 last:mb-0 w-1/3">
-							<label class="text-gray-500 mr-4 text-sm mb-1 required" for="contact_form_fullname">
-								شغل درخواستی
-							</label><input type="text" id="contact_form_fullname" name="contact_form[fullname]" required="required" placeholder="" class="bg-white sm:h-12 h-10 text-sm text-dark-550 focus:font-bold placeholder:text-gray-500 rounded-md border border-gray-200 px-4"/>
-						</div>
-						<div class="flex flex-col mb-6 last:mb-0 w-1/3">
-							<label class="text-gray-500 mr-4 text-sm mb-1 required" for="contact_form_fullname">
-								میزان حقوق درخواستی
-							</label><input type="text" id="contact_form_fullname" name="contact_form[fullname]" required="required" placeholder="" class="bg-white sm:h-12 h-10 text-sm text-dark-550 focus:font-bold placeholder:text-gray-500 rounded-md border border-gray-200 px-4"/>
-						</div>
-						<div class="flex flex-col mb-6 last:mb-0 w-1/3">
-							<label class="text-gray-500 mr-4 text-sm mb-1 required" for="contact_form_fullname">
-								تاریخ امادکی به شروع کار
-							</label><input type="date" id="contact_form_fullname" name="contact_form[fullname]" required="required" placeholder="" class="bg-white sm:h-12 h-10 text-sm text-dark-550 focus:font-bold placeholder:text-gray-500 rounded-md border border-gray-200 px-4"/>
-						</div>
+					<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+						{{ form_row(form.degree) }}
+						{{ form_row(form.degreeDate) }}
+						{{ form_row(form.field) }}
 					</div>
+					{{ form_row(form.degreeSummary) }}
 				</div>
 			</div>
-			{{ form_widget(form) }}
-			<button type="submit" class="mt-6 bg-blue-700  h-12 sm:w-fit-content w-full px-12 flex self-end justify-center items-center text-white border border-blue-700 rounded font-medium transition duration-200 hover:text-blue-700 hover:bg-white">
-				ارسال پیام
-			</button>
+			<div class="bg-white border">
+				<h3 class="text-center bg-gray-200 p-2 font-bold mb-4">
+					تعیین بازه یا محدوده حقوقی
+				</h3>
+				<div class="p-5">
+					<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+						{{ form_row(form.jobTitle) }}
+						{{ form_row(form.salaryExpectation) }}
+						{{ form_row(form.startDateAvailability) }}
+					</div>
+					<i class="w-full h-px bg-gray-200 mb-3"></i>
+					{{ form_row(form.motivationForWorking) }}
+					<i class="w-full h-px bg-gray-200 mb-3"></i>
+					{{ form_row(form.guarantee) }}
+				</div>
+			</div>
+			<div class="bg-white border">
+				<h3 class="text-center bg-gray-200 p-2 font-bold mb-4">
+					درصد موارد ذیل شما از ۱۰۰٪ چقدر است؟
+				</h3>
+				<div class="p-5">
+					<div class="grid grid-cols-1 2xl:grid-cols-4 md:grid-cols-3 lg:grid-cols-7 gap-3">
+						{{ form_row(form.iqScore) }}
+						{{ form_row(form.memoryScore) }}
+						{{ form_row(form.responsibilityScore) }}
+						{{ form_row(form.followUpScore) }}
+						{{ form_row(form.disciplinInWorkScore) }}
+						{{ form_row(form.workEthicScore) }}
+						{{ form_row(form.customerRespectScore) }}
+					</div>
+					<i class="w-full h-px bg-gray-200 mb-3"></i>
+					{{ form_row(form.language) }}
+				</div>
+			</div>
+			<div class="bg-white border">
+				<h3 class="text-center bg-gray-200 p-2 font-bold mb-4">
+					سوابق شغلی
+				</h3>
+				<div class="p-5">
+					{{ form_row(form.insuranceNumber) }}
+					<i class="w-full h-px bg-gray-200 mb-3"></i>
+					{{ form_row(form.employmentHistory) }}
+				</div>
+				<div class="p-5">
+					{% for row in form.workExperience %}
+						{{ form_row(row) }}
+					{% endfor %}
+				</div>
+			</div>
+
+			<div>
+				<button type="submit" class="mt-6 bg-blue-700  h-12 px-12 flex self-end justify-center items-center text-white border border-blue-700 rounded font-medium transition duration-200 hover:text-blue-700 hover:bg-white">
+					ارسال رزومه
+				</button>
+			</div>
 			{{ form_end(form) }}
 		</section>
 	</div>

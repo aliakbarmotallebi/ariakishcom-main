@@ -2,9 +2,11 @@
 
 namespace App\Form;
 
+use App\Entity\Admin;
 use App\Entity\Resume;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -19,21 +21,49 @@ class ResumeFormType extends AbstractType
             ->add('fullname', TextType::class, [
                 'label' => 'نام کامل',
                 'attr'  => [
-                    'class' => 'w-1/2',
-                    'placeholder' => 'نام خود را وارد کنید',
+                    'placeholder' => 'علیرضا امیری',
                 ],
             ])
             ->add('fatherName', TextType::class, [
                 'label' => 'نام پدر',
                 'attr'  => [
-                    'class' => 'w-1/2',
-                    'placeholder' => 'نام خود را وارد کنید',
+                    'placeholder' => 'محمد',
+                ],
+            ])
+            ->add('nationalCode', TextType::class, [
+                'label' => 'کد ملی',
+                'attr'  => [
+                    'placeholder' => '0021232147',
+                ],
+            ])
+            ->add('birthCertificateNumber', TextType::class, [
+                'label' => 'شماره شناسنامه',
+                'attr'  => [
+                    'placeholder' => '6025',
+                ],
+            ])
+            ->add('birthDate', TextType::class, [
+                'label' => 'تاریخ تولد',
+                'attr'  => [
+                    'placeholder' => '6025',
                 ],
             ])
             ->add('phoneNumber', TextType::class, [
                 'label' => 'شماره همراه',
                 'attr'  => [
-                    'placeholder' => 'نام خود را وارد کنید',
+                    'placeholder' => '0912001452',
+                ],
+            ])
+            ->add('address', TextareaType::class, [
+                'label' => ' آدرس محل سکونت',
+                'attr'  => [
+                    'placeholder' => 'تهران، خیابان ولیعصر',
+                ],
+            ])
+            ->add('tel', TextType::class, [
+                'label' => 'تلفن ثابت',
+                'attr'  => [
+                    'placeholder' => '02128621420',
                 ],
             ])
             ->add('gender', ChoiceType::class, [
@@ -42,7 +72,6 @@ class ResumeFormType extends AbstractType
                 'required' => true,
                 'expanded' => true
             ])
-            ->add('birthDate')
             ->add('maritalStatus', ChoiceType::class, [
                 'label' => 'وضعیت تاهل',
                 'choices' => ['متاهل' =>  1, 'مجرد' =>  0],
@@ -54,51 +83,32 @@ class ResumeFormType extends AbstractType
                 'choices' => ['دارای پایان خدمت' =>  1, 'مشمول خدمت' =>  0],
                 'expanded' => true
             ])
-            ->add('nationalCode', TextType::class, [
-                'label' => 'کد ملی',
-                'attr'  => [
-                    'class' => 'w-1/2',
-                    'placeholder' => 'نام خود را وارد کنید',
-                ],
-            ])
-            ->add('birthCertificateNumber', TextType::class, [
-                'label' => 'شماره شناسنامه',
-                'attr'  => [
-                    'class' => 'w-1/2',
-                    'placeholder' => 'نام خود را وارد کنید',
-                ],
-            ])
-            ->add('address', TextareaType::class, [
-                'label' => 'نام کامل',
-                'attr'  => [
-                    'placeholder' => 'نام خود را وارد کنید',
-                ],
-            ])
             ->add('residentialStatus', ChoiceType::class, [
                 'label' => 'وضعیت سکونت',
                 'choices' => ['شخصی' =>  1, 'استیجاری' =>  0],
                 'expanded' => true
             ])
-            ->add('tel', TextType::class, [
-                'label' => 'شماره همراه',
-                'attr'  => [
-                    'placeholder' => 'نام خود را وارد کنید',
-                ],
-            ])
             ->add('degree', TextType::class, [
-                'label' => 'شماره همراه',
+                'label' => 'مقطع تحصیلی',
                 'attr'  => [
-                    'placeholder' => 'نام خود را وارد کنید',
+                    'placeholder' => 'کارشناسی',
                 ],
             ])
-            ->add('degreeDate')
+            ->add('degreeDate', TextType::class, [
+                'label' => 'تاریخ آخرین مدرک تحصیلی',
+                'attr'  => [
+                    'placeholder' => '1380/06/30',
+                ],
+            ])
             ->add('field', TextType::class, [
-                'label' => 'شماره همراه',
+                'label' => 'رشته تحصیلی',
                 'attr'  => [
-                    'placeholder' => 'نام خود را وارد کنید',
+                    'placeholder' => 'مدیریت بارزگانی',
                 ],
             ])
-            ->add('degreeSummary')
+            ->add('degreeSummary', TextareaType::class, [
+                'label' => 'دوره های آموزشی دیگر که گذرانده اید',
+            ])
             ->add('language', ChoiceType::class, [
                 'label' => 'میزان تسلط در زبان خارجی',
                 'choices' => ['عالی' =>  1, 'متوسط' =>  0, 'ضعیف' =>  0],
@@ -109,9 +119,24 @@ class ResumeFormType extends AbstractType
                 'choices' => ['بله' =>  1, 'خیر' =>  0],
                 'expanded' => true
             ])
-            ->add('jobTitle')
-            ->add('salaryExpectation')
-            ->add('startDateAvailability')
+            ->add('jobTitle', TextType::class,[
+                'label' => 'عنوان  شغل درخواستی',
+                'attr'  => [
+                    'placeholder' => 'منشی دفتر',
+                ],
+            ])
+            ->add('salaryExpectation', TextType::class,[
+                'label' => 'میزان حقوق درخواستی(تومان)',
+                'attr'  => [
+                    'placeholder' => '10000000',
+                ],
+            ])
+            ->add('startDateAvailability', TextType::class,[
+                'label' => 'تاریخ آمادگی شروع به کار',
+                'attr'  => [
+                    'placeholder' => '1402/10/12',
+                ],
+            ])
             ->add('iqScore', IntegerType::class, [
                 'label' => 'ضریب هوشی',
             ])
@@ -133,10 +158,26 @@ class ResumeFormType extends AbstractType
             ->add('customerRespectScore', IntegerType::class, [
                 'label' => 'احترام به  مشتری',
             ])
-            ->add('motivationForWorking')
-            ->add('insuranceNumber')
-            ->add('employmentHistory')
-            ->add('workExperience');
+            ->add('motivationForWorking', ChoiceType::class, [
+                'label' => 'انگیزه شما از کار کردن چیست؟',
+                'choices' => ['ارتقا شغلی' =>  1, 'استقلال مالی' =>  0],
+                'expanded' => true
+            ])
+            ->add('insuranceNumber', TextType::class,[
+                'label' => 'چنانچه سابقه بیمه تامین اجتماعی دارید شماره بیمه خود را بنویسید',
+                'attr'  => [
+                    'placeholder' => '123456789123456',
+                ],
+            ])
+            ->add('employmentHistory', TextareaType::class,[
+                'label' => 'سوابق شغلی و تخصصی و تجربه های کاری و سمت های که داشتید را عنوان نمایید',
+            ])
+            ->add('workExperience', CollectionType::class, [
+                'label' => 'تاریخچه سابقه کاری شما',
+                'entry_type' => WorkExperienceCollectionType::class,
+                'by_reference' => false,
+                'allow_add' => true
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
@@ -145,4 +186,6 @@ class ResumeFormType extends AbstractType
             'data_class' => Resume::class,
         ]);
     }
+
+    
 }
