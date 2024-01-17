@@ -5,138 +5,230 @@
 {% endblock %}
 
 {% block body %}
-	<div class="flex flex-col items-center ">
-		<div class="flex justify-start mt-7 container">
-			<ul class="text-xs text-gray-400 flex gap-2">
-				<li>
-					<a>وبلاگ /</a>
-				</li>
-				<li>
-					<a>اموزشی /</a>
-				</li>
-				<li>
-					<a>لورم اپسیوم /</a>
-				</li>
-			</ul>
+	<section class="container mx-auto h-full flex flex-col gap-3 pt-5">
+		<div class="mb-16 flex flex-col items-center pt-10">
+			<h2 class="text-gray-800 text-base md:text-3xl font-bold mb-2">
+				فرم درخواست کار
+			</h2>
+			<h6 class="text-gray-500 text-center text-2xl md:text-base">
+				در این صفحه میتوانید اطلاعات ارتباطی شرکت آریاکیش را مشاهده کنید.
+			</h6>
 		</div>
-		<section class="container h-full flex flex-col gap-3 pt-5">
+		{{ form_start(form, {'class': 'flex flex-col'}) }}
+		<div class="bg-white border">
+			<h1 class="font-bold text-center bg-gray-200 p-2 mb-4">
+				مشخصات فردی
+			</h1>
+			<div class="p-5">
+				<div class="grid grid-cols-1 md:grid-cols-5 gap-3">
+					{{ form_row(form.fullname, {
+						label : 'نام کامل',
+						attr  : {
+							placeholder : 'علیرضا امیری',
+						}
+					}) }}
+					{{ form_row(form.fatherName, {
+						label : 'نام پدر',
+						attr  : {
+							placeholder : 'محمد',
+						}
+					}) }}
+					{{ form_row(form.birthDate, {
+						label : 'تاریخ تولد',
+						attr  : {
+							placeholder : '1380/10/12',
+						}
+					}) }}
+					{{ form_row(form.birthCertificateNumber, {
+						label : 'شناسنامه',
+						attr  : {
+							placeholder : '30251',
+						}
+					}) }}
+					{{ form_row(form.nationalCode, {
+						label : 'کد ملی',
+						attr  : {
+							placeholder : '30251',
+						}
+					}) }}
+				</div>
+				<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+					{{ form_row(form.address, {
+						label : 'آدرس',
+						attr  : {
+							placeholder : 'تهران، خیابان ولیعصر',
+						}
+					}) }}
+					{{ form_row(form.phoneNumber, {
+						label : 'شماره همراه',
+						attr  : {
+							placeholder : '09121234125',
+						}
+					}) }}
+					{{ form_row(form.tel, {
+						label : 'شماره تلفن ثابت',
+						attr  : {
+							placeholder : '02137894152',
+						}
+					}) }}
+				</div>
+				<i class="w-full h-px bg-gray-200 mb-3"></i>
+				<div class="flex gap-3">
+					<div class="flex flex-col mb-6 last:mb-0 w-[32.7%]">
+						<div class="flex py-2.5">
+							{{ form_row(form.maritalStatus, {
+								label : 'وضعیت متاهل'
+							}) }}
+						</div>
+					</div>
+					<div class="flex flex-col mb-6 last:mb-0 w-[32.7%]">
+						<div class="flex py-2.5">
+							{{ form_row(form.residentialStatus, {
+								label : 'وضعیت سکونت',
+								attr  : {
+									placeholder : '02137894152',
+								}
+							}) }}
+						</div>
+					</div>
+				</div>
+				<div class="flex gap-3">
+					<div class="flex flex-col mb-6 last:mb-0 w-[32.7%]">
+						<div class="flex py-2.5">
+							{{ form_row(form.gender, {
+								label : 'جنسیت',
+							}) }}
+						</div>
+					</div>
+					<div class="flex flex-col mb-6 last:mb-0 w-[32.7%]">
+						<div class="flex py-2.5">
+							{{ form_row(form.militaryStatus, {
+								label : 'وضعیت خدمت',
+							}) }}
+						</div>
+					</div>
+				</div>
+				<i class="w-full h-px bg-gray-200 mb-3"></i>
+				<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+					{{ form_row(form.degree, {
+						label : 'مقطع تحصیلی',
+						attr  : {
+							placeholder : 'کارشناسی',
+						}
+					}) }}
+					{{ form_row(form.degreeDate, {
+						label : 'تاریخ آخرین مدرک تحصیلی',
+						attr  : {
+							placeholder : '1370/10/12',
+						}
+					}) }}
+					{{ form_row(form.field, {
+						label : 'رشته تحصیلی',
+						attr  : {
+							placeholder : 'مدیریت بازرگانی',
+						}
+					}) }}
+				</div>
+				{{ form_row(form.degreeSummary, {
+						label : 'دوره های آموزشی دیگر که گذرانده اید',
+						attr  : {
+							placeholder : 'مدیریت بازرگانی',
+						}
+				}) }}
+			</div>
+		</div>
+		<div class="bg-white border">
+			<h3 class="text-center bg-gray-200 p-2 font-bold mb-4">
+				تعیین بازه یا محدوده حقوقی
+			</h3>
+			<div class="p-5">
+				<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+					{{ form_row(form.jobTitle, {
+						label : 'عنوان  شغل درخواستی',
+						attr  : {
+							placeholder : 'منشی دفتر',
+						}
+					}) }}
+					{{ form_row(form.salaryExpectation, {
+						label : 'میزان حقوق درخواستی(تومان)',
+						attr  : {
+							placeholder : '10000000',
+						}
+					}) }}
+					{{ form_row(form.startDateAvailability, {
+						label : 'تاریخ آمادگی شروع به کار',
+						attr  : {
+							placeholder : '1402/10/12',
+						}
+					}) }}
+				</div>
+				<i class="w-full h-px bg-gray-200 mb-3"></i>
+				{{ form_row(form.motivationForWorking, {
+						label : 'انگیزه شما از کار کردن چیست؟'
+					}) }}
+				<i class="w-full h-px bg-gray-200 mb-3"></i>
+				{{ form_row(form.guarantee, {
+						label : 'شغلی که به شما واگذر خواهد شد. نیاز به تضمین دارد مایل به رائه تضمین هستید',
+					}) }}
+			</div>
+		</div>
+		<div class="bg-white border">
+			<h3 class="text-center bg-gray-200 p-2 font-bold mb-4">
+				درصد موارد ذیل شما از ۱۰۰٪ چقدر است؟
+			</h3>
+			<div class="p-5">
+				<div class="grid grid-cols-1 2xl:grid-cols-4 md:grid-cols-3 lg:grid-cols-7 gap-3">
+					{{ form_row(form.iqScore, {
+						label : 'ضریب هوشی',
+					}) }}
+					{{ form_row(form.memoryScore, {
+						label : 'حافظه',
+					}) }}
+					{{ form_row(form.responsibilityScore, {
+						label : 'مسئولیت پذیری',
+					}) }}
+					{{ form_row(form.followUpScore, {
+						label : 'پیگیری امور محوله',
+					}) }}
+					{{ form_row(form.disciplinInWorkScore, {
+						label : 'نظم و انضباط در کار',
+					}) }}
+					{{ form_row(form.workEthicScore, {
+						label : 'وجدان کاری',
+					}) }}
+					{{ form_row(form.customerRespectScore, {
+						label : 'احترام به  مشتری',
+					}) }}
+				</div>
+				<i class="w-full h-px bg-gray-200 mb-3"></i>
+				{{ form_row(form.language, {
+					label : 'میزان تسلط در زبان خارجی'
+				}) }}
+			</div>
+		</div>
+		<div class="bg-white border">
+			<h3 class="text-center bg-gray-200 p-2 font-bold mb-4">
+				سوابق شغلی
+			</h3>
+			<div class="p-5">
+				{{ form_row(form.insuranceNumber, {
+					label : 'چنانچه سابقه بیمه تامین اجتماعی دارید شماره بیمه خود را بنویسید',
+					attr  : {
+						placeholder : '123456789123456',
+					}
+				}) }}
+				<i class="w-full h-px bg-gray-200 mb-3"></i>
+				{{ form_row(form.employmentHistory, {
+					label : 'سوابق شغلی و تخصصی و تجربه های کاری و سمت های که داشتید را عنوان نمایید',
+				}) }}
+			</div>
+		</div>
 
-			<div class="mb-16 flex flex-col items-center pt-10">
-				<h2 class="text-gray-800 text-base md:text-3xl font-bold mb-2">
-					فرم درخواست کار
-				</h2>
-				<h6 class="text-gray-500 text-center text-2xl md:text-base">
-					در این صفحه میتوانید اطلاعات ارتباطی شرکت آریاکیش را مشاهده کنید.
-				</h6>
-			</div>
-			{{ form_start(form, {'class': 'flex flex-co'}) }}
-			<div class="bg-white border">
-				<h1 class="font-bold text-center bg-gray-200 p-2 mb-4">
-					مشخصات فردی
-				</h1>
-				<div class="p-5">
-					<div class="grid grid-cols-1 md:grid-cols-5 gap-3">
-						{{ form_row(form.fullname) }}
-						{{ form_row(form.fatherName) }}
-						{{ form_row(form.birthDate) }}
-						{{ form_row(form.birthCertificateNumber) }}
-						{{ form_row(form.nationalCode) }}
-					</div>
-					<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-						{{ form_row(form.address) }}
-						{{ form_row(form.phoneNumber) }}
-						{{ form_row(form.tel) }}
-					</div>
-					<i class="w-full h-px bg-gray-200 mb-3"></i>
-					<div class="flex gap-3">
-						<div class="flex flex-col mb-6 last:mb-0 w-[32.7%]">
-							<div class="flex py-2.5">
-								{{ form_row(form.maritalStatus) }}
-							</div>
-						</div>
-						<div class="flex flex-col mb-6 last:mb-0 w-[32.7%]">
-							<div class="flex py-2.5">
-								{{ form_row(form.residentialStatus) }}
-							</div>
-						</div>
-					</div>
-					<div class="flex gap-3">
-						<div class="flex flex-col mb-6 last:mb-0 w-[32.7%]">
-							<div class="flex py-2.5">
-								{{ form_row(form.gender) }}
-							</div>
-						</div>
-						<div class="flex flex-col mb-6 last:mb-0 w-[32.7%]">
-							<div class="flex py-2.5">
-								{{ form_row(form.militaryStatus) }}
-							</div>
-						</div>
-					</div>
-					<i class="w-full h-px bg-gray-200 mb-3"></i>
-					<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-						{{ form_row(form.degree) }}
-						{{ form_row(form.degreeDate) }}
-						{{ form_row(form.field) }}
-					</div>
-					{{ form_row(form.degreeSummary) }}
-				</div>
-			</div>
-			<div class="bg-white border">
-				<h3 class="text-center bg-gray-200 p-2 font-bold mb-4">
-					تعیین بازه یا محدوده حقوقی
-				</h3>
-				<div class="p-5">
-					<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-						{{ form_row(form.jobTitle) }}
-						{{ form_row(form.salaryExpectation) }}
-						{{ form_row(form.startDateAvailability) }}
-					</div>
-					<i class="w-full h-px bg-gray-200 mb-3"></i>
-					{{ form_row(form.motivationForWorking) }}
-					<i class="w-full h-px bg-gray-200 mb-3"></i>
-					{{ form_row(form.guarantee) }}
-				</div>
-			</div>
-			<div class="bg-white border">
-				<h3 class="text-center bg-gray-200 p-2 font-bold mb-4">
-					درصد موارد ذیل شما از ۱۰۰٪ چقدر است؟
-				</h3>
-				<div class="p-5">
-					<div class="grid grid-cols-1 2xl:grid-cols-4 md:grid-cols-3 lg:grid-cols-7 gap-3">
-						{{ form_row(form.iqScore) }}
-						{{ form_row(form.memoryScore) }}
-						{{ form_row(form.responsibilityScore) }}
-						{{ form_row(form.followUpScore) }}
-						{{ form_row(form.disciplinInWorkScore) }}
-						{{ form_row(form.workEthicScore) }}
-						{{ form_row(form.customerRespectScore) }}
-					</div>
-					<i class="w-full h-px bg-gray-200 mb-3"></i>
-					{{ form_row(form.language) }}
-				</div>
-			</div>
-			<div class="bg-white border">
-				<h3 class="text-center bg-gray-200 p-2 font-bold mb-4">
-					سوابق شغلی
-				</h3>
-				<div class="p-5">
-					{{ form_row(form.insuranceNumber) }}
-					<i class="w-full h-px bg-gray-200 mb-3"></i>
-					{{ form_row(form.employmentHistory) }}
-				</div>
-				<div class="p-5">
-					{% for row in form.workExperience %}
-						{{ form_row(row) }}
-					{% endfor %}
-				</div>
-			</div>
-
-			<div>
-				<button type="submit" class="mt-6 bg-blue-700  h-12 px-12 flex self-end justify-center items-center text-white border border-blue-700 rounded font-medium transition duration-200 hover:text-blue-700 hover:bg-white">
-					ارسال رزومه
-				</button>
-			</div>
-			{{ form_end(form) }}
-		</section>
-	</div>
+		<div>
+			<button type="submit" class="mt-6 bg-blue-700  h-12 px-12 flex self-end justify-center items-center text-white border border-blue-700 rounded font-medium transition duration-200 hover:text-blue-700 hover:bg-white">
+				ارسال رزومه
+			</button>
+		</div>
+		{{ form_end(form) }}
+	</section>
 {% endblock %}

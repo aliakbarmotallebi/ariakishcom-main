@@ -7,12 +7,14 @@ use App\Enum\Language;
 use App\Enum\MotivationForWorking;
 use App\Enum\Status;
 use App\Repository\ResumeRepository;
-
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 #[ORM\Entity(repositoryClass: ResumeRepository::class)]
 #[ORM\Table(name: '`resumes`')]
+#[UniqueEntity('nationalCode')]
 #[ORM\HasLifecycleCallbacks]
 class Resume
 {
@@ -47,7 +49,7 @@ class Resume
     #[ORM\Column(length: 10)]
     private ?string $nationalCode = null;
 
-    #[ORM\Column(length: 100)]
+    #[ORM\Column(length: 100, nullable:true)]
     private ?string $birthCertificateNumber = null;
 
     #[ORM\Column(type: Types::TEXT)]
@@ -56,7 +58,7 @@ class Resume
     #[ORM\Column(length: 255)]
     private ?string $residentialStatus = null;
 
-    #[ORM\Column(length: 11)]
+    #[ORM\Column(length: 11, nullable:true)]
     private ?string $tel = null;
 
     #[ORM\Column(length: 255)]
@@ -68,7 +70,7 @@ class Resume
     #[ORM\Column(length: 255)]
     private ?string $field = null;
 
-    #[ORM\Column(type: Types::TEXT)]
+    #[ORM\Column(type: Types::TEXT, nullable:true)]
     private ?string $degreeSummary = null;
 
     #[ORM\Column(type: Types::STRING, enumType: Language::class)]
@@ -113,7 +115,7 @@ class Resume
     #[ORM\Column(length: 255)]
     private ?string $insuranceNumber = null;
 
-    #[ORM\Column(type: Types::TEXT)]
+    #[ORM\Column(type: Types::TEXT, nullable:true)]
     private ?string $employmentHistory = null;
 
     #[ORM\Column(type: Types::JSON, nullable:true)]
@@ -324,12 +326,13 @@ class Resume
         return $this;
     }
 
-    public function getLanguage(): ?string
+    public function getLanguage(): ?Language
+
     {
         return $this->language;
     }
 
-    public function setLanguage(string $language): static
+    public function setLanguage(Language $language): static
     {
         $this->language = $language;
 
@@ -468,12 +471,12 @@ class Resume
         return $this;
     }
 
-    public function getMotivationForWorking(): ?string
+    public function getMotivationForWorking(): ?MotivationForWorking
     {
         return $this->motivationForWorking;
     }
 
-    public function setMotivationForWorking(string $motivationForWorking): static
+    public function setMotivationForWorking(MotivationForWorking $motivationForWorking): static
     {
         $this->motivationForWorking = $motivationForWorking;
 
