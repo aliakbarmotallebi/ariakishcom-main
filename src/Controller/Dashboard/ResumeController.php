@@ -2,6 +2,7 @@
 
 namespace App\Controller\Dashboard;
 
+use App\Repository\ResumeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -9,10 +10,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class ResumeController extends AbstractController
 {
     #[Route('/dashboard/resumes', name: 'dashboard_resumes')]
-    public function index(): Response
+    public function index(ResumeRepository $resumeRepository): Response
     {
+        $resumes = $resumeRepository->findAll();
         return $this->render('dashboard/resume/index.html.twig', [
-            'controller_name' => 'ResumeController',
+            'resumes' => $resumes
         ]);
     }
 }

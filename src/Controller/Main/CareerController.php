@@ -24,13 +24,12 @@ class CareerController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
-            dd($form);
-            // $em->persist($resume);
-            // $em->flush();
-            // sweetalert()->confirmButtonText(
-            //     'متوجه شدم',
-            // )->addSuccess('پیام شما باموفقیت ثبت شد'); 
-            // return $this->redirectToRoute('contactus_page');
+            $em->persist($resume);
+            $em->flush();
+            sweetalert()->confirmButtonText(
+                'متوجه شدم',
+            )->addSuccess('رزومه شما باموفقیت ثبت شد'); 
+            return $this->redirectToRoute('career_page');
         }
         $form = $this->createForm(ResumeFormType::class, $resume);
 

@@ -39,10 +39,10 @@ class ResumeFormType extends AbstractType
                 ]
             ])
             ->add('address', TextareaType::class)
-            ->add('tel', NumberType::class, [
+            ->add('tel', TextType::class, [
                 'required'   => false,
                 'constraints' => [
-                    new Regex('/^0[0-9]{10}$/')
+                    new Regex("/\d+/")
                 ]
             ])
             ->add('gender', ChoiceType::class, [
