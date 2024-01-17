@@ -83,7 +83,7 @@
 								{{ admin.createdAt|date('d-m-Y') }}
 							</td>
 							<td class="py-6 text-slate-600 text-sm">
-								{{ admin.status }}
+								{{ admin.status.value }}
 							</td>
 							<td class="py-6">
 								<div class="flex justify-center items-center gap-2">
@@ -101,8 +101,10 @@
 						</tr>
 					{% endfor %}
 				{% else %}
-					<div class='alert alert-info'>
-						<p class='text-info text-center'>Aucun véhicule en vente</p>
+					<div class='bg-sky-100 rounded-lg px-3 py-4'>
+						<p class='text-sky-800 text-center font-bold'>
+							اطلاعاتی یافت نشد
+						</p>
 					</div>
 				{% endif %}
 			</tbody>

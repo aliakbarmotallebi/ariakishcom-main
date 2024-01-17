@@ -105,12 +105,12 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getStatus(): ?string
+    public function getStatus(): ?Status
     {
         return $this->status;
     }
 
-    public function setStatus(string $status): self {
+    public function setStatus(Status $status): self {
         $this->status = $status;
 
         return $this;
