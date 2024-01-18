@@ -22,21 +22,11 @@ class AdminController extends AbstractController
     {
         $searchData = new SearchData();
         $form = $this->createForm(SearchType::class, $searchData);
-
         $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $searchData->page = $request->query->getInt('page', 1);
-            $admins = $adminRepository->findBySearch($searchData);
-
-            return $this->render('dashboard/pages/admin/index.html.twig', [
-                'form' => $form->createView(),
-                'admins' => $admins
-            ]);
-        }
-
+   
         return $this->render('dashboard/pages/admin/index.html.twig', [
             'form' => $form->createView(),
-            'admins' => $adminRepository->findPublished(1),
+            'contents' => $adminRepository->findBySearch($searchData)
         ]);
     }
 

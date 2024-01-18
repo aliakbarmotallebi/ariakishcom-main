@@ -1,0 +1,60 @@
+<table class="w-full table">
+	<thead class="table-header-group">
+		<tr class="text-xs text-gray-400 border-b">
+			<th class="font-semibold py-3">
+				{{ knp_pagination_sortable(contents, 'شناسه مدیر', 'id') }}
+			</th>
+			<th class="font-semibold py-3">
+				{{ knp_pagination_sortable(contents, 'نام کاربری', 'id') }}
+			</th>
+			<th class="font-semibold py-3">نام کامل</th>
+			<th class="font-semibold py-3">نقش ها</th>
+			<th class="font-semibold py-3">تاریخ</th>
+			<th class="font-semibold py-3">وضعیت مدیر</th>
+			<th class="font-semibold py-3"></th>
+		</tr>
+	</thead>
+	<tbody>
+		{% if contents is not empty  %}
+			{% for content in contents %}
+				<tr class="text-gray-400 font-semibold text-xs text-center border-b">
+					<td class="py-6 text-blue-600 font-semibold">#{{ content.id }}</td>
+					<td class="py-6">
+						{{ content.username }}
+					</td>
+					<td class="py-6 text-slate-600 text-sm">
+						{{ content.fullname }}
+					</td>
+					<td class="py-6 text-slate-600 text-sm">
+						{{ content.roles|join(' | ') }}
+					</td>
+					<td class="py-6">
+						{{ content.createdAt|date('d-m-Y') }}
+					</td>
+					<td class="py-6 text-slate-600 text-sm">
+						{{ content.status.value }}
+					</td>
+					<td class="py-6">
+						<div class="flex justify-center items-center gap-2">
+							<div class="w-2 h-2 bg-green-400 rounded-full"></div>
+							<p class="text-green-400">تکمیل</p>
+						</div>
+					</td>
+					<td class="py-6">
+						<button>
+							<svg xmlns="http://www.w3.org/2000/svg" class="stroke-current inline" width="20" height="20" fill="none" viewbox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18.503 12a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0M12.5 12a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m-6.002 0a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0"></path>
+							</svg>
+						</button>
+					</td>
+				</tr>
+			{% endfor %}
+		{% else %}
+			<div class='bg-sky-100 rounded-lg px-3 py-4'>
+				<p class='text-sky-800 text-center font-bold'>
+					اطلاعاتی یافت نشد
+				</p>
+			</div>
+		{% endif %}
+	</tbody>
+</tbody>
