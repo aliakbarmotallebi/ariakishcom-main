@@ -56,8 +56,9 @@ class AdminRepository extends ServiceEntityRepository implements PasswordUpgrade
 
         if (!empty($searchData->getQ())) {
             $query = $query
-                ->andWhere('c.username LIKE :string OR c.fullname LIKE :string')
-                ->setParameter('string', "%{$searchData->getQ()}%");
+                ->orWhere('p.username LIKE :q')
+                ->orWhere('p.fullname LIKE :q')
+                ->setParameter('q', "%{$searchData->getQ()}%");
         }
 
         $query = $query

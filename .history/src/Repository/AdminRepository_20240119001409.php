@@ -46,25 +46,29 @@ class AdminRepository extends ServiceEntityRepository implements PasswordUpgrade
 
     public function findBySearch(SearchData $searchData): PaginationInterface
     {
-        $query = $this->createQueryBuilder('c');
+        $data = $this->createQueryBuilder('p');
             
-        if (!empty($searchData->getSort()) and !empty($searchData->getDirection())) {
-            $query->addOrderBy("c.{$searchData->getSort()}", $searchData->getDirection() ? $searchData->getDirection() : 'DESC');
-        } else {
-            $query->addOrderBy("c.createdAt", 'DESC');
+        if (!empty($searchData->sort) and !empty($searchData->direction)) {
+            $data = $data
+                ->addOrderBy('p.:col', ':sort')
+                ->setParameters([
+                    'col' => $searchData->direction,
+                    'sort' => $searchData->sort
+                ]);
         }
 
-        if (!empty($searchData->getQ())) {
-            $query = $query
-                ->andWhere('c.username LIKE :string OR c.fullname LIKE :string')
-                ->setParameter('string', "%{$searchData->getQ()}%");
+        if (!empty($searchData->q)) {
+            $data = $data
+                ->orWhere('p.username LIKE :q')
+                ->orWhere('p.fullname LIKE :q')
+                ->setParameter('q', "%{$searchData->q}%");
         }
 
-        $query = $query
+        $data = $data
             ->getQuery()
             ->getResult();
 
-        $posts = $this->paginatorInterface->paginate($query, $searchData->getPage(), 9);
+        $posts = $this->paginatorInterface->paginate($data, $searchData->page, 9);
 
         return $posts;
     }

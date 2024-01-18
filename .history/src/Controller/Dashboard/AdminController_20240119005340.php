@@ -27,7 +27,7 @@ class AdminController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $contents = $adminRepository->findBySearch($searchData);
         }else{
-            $contents = '';
+            $contents =
         }
    
         return $this->render('dashboard/pages/admin/index.html.twig', [
