@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CareerController extends AbstractController
 {
-    #[Route('/career', name: 'career_page')]
+    #[Route('/career', name: 'career_page', methods: ['GET', 'POST'])]
     public function cooperation(
         Request $request,
         EntityManagerInterface $em

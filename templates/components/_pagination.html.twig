@@ -1,0 +1,46 @@
+{# tailwindcss Sliding pagination control implementation #}
+{% if pageCount > 1 %}
+	<ul class="inline-flex -space-x-px text-sm font-semibold w-auto rounded border border-gray-300 overflow-hidden">
+		{% if first is defined and current != first %}
+			<li>
+				<a class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border-l-2 border-gray-300 hover:bg-gray-100 hover:text-gray-700" href="{{ path(route, query|merge({(pageParameterName): first})) }}">&lt;&lt;</a>
+			</li>
+		{% endif %}
+
+		{% if previous is defined %}
+			<li>
+				<a class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border-l-2 border-gray-300 hover:bg-gray-100 hover:text-gray-700" rel="prev" href="{{ path(route, query|merge({(pageParameterName): previous})) }}">
+					قبلی
+				</a>
+			</li>
+		{% endif %}
+
+		{% for page in pagesInRange %}
+			{% if page != current %}
+				<li>
+					<a class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border-l-2 border-gray-300 hover:bg-gray-100 hover:text-gray-700" href="{{ path(route, query|merge({(pageParameterName): page})) }}">{{ page }}</a>
+				</li>
+			{% else %}
+				<li>
+					<span class="flex items-center justify-center px-3 h-8 leading-tight bg-neutral-300 text-neutral-900 border-l-2 border-gray-300">
+						{{ page }}
+					</span>
+				</li>
+			{% endif %}
+		{% endfor %}
+
+		{% if next is defined %}
+			<li>
+				<a class="p-2 flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border-l-2 border-gray-300 hover:bg-gray-100 hover:text-gray-700" rel="next" href="{{ path(route, query|merge({(pageParameterName): next})) }}">
+					بعدی
+				</a>
+			</li>
+		{% endif %}
+
+		{% if last is defined and current != last %}
+			<li>
+				<a class="p-2 flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border-l hover:bg-gray-100 hover:text-gray-700" href="{{ path(route, query|merge({(pageParameterName): last})) }}">&gt;&gt;</a>
+			</li>
+		{% endif %}
+	</ul>
+{% endif %}

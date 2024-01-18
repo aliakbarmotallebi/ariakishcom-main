@@ -35,7 +35,11 @@
 			<div class="flex gap-3 items-center">
 				<p class="text-xl text-slate-600 font-bold">همه مدیر ها</p>
 			</div>
-			<div class="flex gap-2 items-center">
+			<div class="flex gap-2 items-center justify-center">
+				{% include "components/_search_data.html.twig" with {
+					form: form ?? null
+				} only %}
+
 				<div class="h-full w-px bg-gray-200"></div>
 
 				<div x-data="{open:false}" class="relative">
@@ -56,7 +60,9 @@
 		<table class="w-full table">
 			<thead class="table-header-group">
 				<tr class="text-xs text-gray-400 border-b">
-					<th class="font-semibold py-3">شناسه مدیر</th>
+					<th class="font-semibold py-3">
+						{{ knp_pagination_sortable(admins, 'شناسه مدیر', 'id') }}
+					</th>
 					<th class="font-semibold py-3">نام کاربری</th>
 					<th class="font-semibold py-3">نام کامل</th>
 					<th class="font-semibold py-3">نقش ها</th>
@@ -112,32 +118,7 @@
 	</table>
 	<div class="py-5">
 		<div class="px-7 flex justify-between bg-white">
-			<div class="border flex text-sm font-semibold w-fit rounded">
-				<div class="p-2 text-slate-500 font-semibold border-l flex justify-center items-center">
-					قبلی
-				</div>
-				<div class="p-2 text-slate-500 font-semibold border-l px-5 flex justify-center items-center">
-					1
-				</div>
-				<div class="p-2 text-slate-500 font-semibold border-l px-5 flex justify-center items-center">
-					2
-				</div>
-				<div class="p-2 text-slate-500 border-l flex justify-center items-center">
-					<svg xmlns="http://www.w3.org/2000/svg" class="inline stroke-current" width="24" height="24" fill="none" viewbox="0 0 24 24">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18.503 12a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0M12.5 12a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m-6.002 0a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0"></path>
-					</svg>
-				</div>
-				<div class="p-2 text-slate-500 font-semibold border-l px-5 flex justify-center items-center">
-					6
-				</div>
-				<div class="p-2 text-slate-500 font-semibold border-l px-5 flex justify-center items-center">
-					7
-				</div>
-				<div class="p-2 text-slate-500 font-semibold flex justify-center items-center">
-					بعدی
-				</div>
-			</div>
-
+			{{ knp_pagination_render(admins) }}
 		</div>
 	</div>
 </div>{% endblock %}

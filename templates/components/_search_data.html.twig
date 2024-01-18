@@ -1,0 +1,13 @@
+{% if form %}
+	{{ form_start(form) }}
+	<div class="text-slate-400 border px-3 py-1.5 items-center flex justify-center gap-3 rounded bg-white">
+		{{ form_widget(form.q, {'attr': {'class': 'text-xs text-slate-400 outline-none border-none bg-white p-0 rounded-none', placeholder: "جستجوی سریع بر اساس شناسه" }}) }}
+		{{ form_errors(form.q) }}
+		<button type="submit">
+			<svg xmlns="http://www.w3.org/2000/svg" class="inline stroke-current" width="20" height="20" fill="none" viewbox="0 0 24 24">
+				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.714 6.838a6.276 6.276 0 1 1-8.876 8.876 6.276 6.276 0 0 1 8.876-8.876M19 19l-3.29-3.29"/>
+			</svg>
+		</button>
+	</div>
+	{{ form_end(form) }}
+{% endif %}

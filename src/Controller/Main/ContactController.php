@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ContactController extends AbstractController
 {
-    #[Route('/contact-us', name: 'contactus_page')]
+    #[Route('/contact-us', name: 'contactus_page', methods: ['GET', 'POST'])]
     public function formContactUs(
         Request $request,
         EntityManagerInterface $em

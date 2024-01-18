@@ -17,7 +17,7 @@ class SecurityController extends AbstractController
     {
         // $user = new Admin;
         // $plaintextPassword = '123456789';
-        // $user->setUsername('admin');
+        // $user->setUsername('user2');
         // $user->setPassword($userPasswordHasherInterface->hashPassword(
         //     $user,
         //     $plaintextPassword
