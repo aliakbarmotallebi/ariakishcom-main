@@ -44,6 +44,24 @@ class AdminRepository extends ServiceEntityRepository implements PasswordUpgrade
         $this->getEntityManager()->flush();
     }
 
+    public function save(Admin $entity, bool $flush = false): void
+    {
+        $this->getEntityManager()->persist($entity);
+
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
+
+    public function remove(Admin $entity, bool $flush = false): void
+    {
+        $this->getEntityManager()->remove($entity);
+
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
+
     public function findBySearch(SearchData $searchData): PaginationInterface
     {
         $query = $this->createQueryBuilder('c');
@@ -60,13 +78,20 @@ class AdminRepository extends ServiceEntityRepository implements PasswordUpgrade
                 ->setParameter('string', "%{$searchData->getQ()}%");
         }
 
-        $query = $query
+        return $query
             ->getQuery()
             ->getResult();
-
-        $posts = $this->paginatorInterface->paginate($query, $searchData->getPage(), 9);
-
-        return $posts;
     }
+
+    // protected function getPaginatorForQuery($query, SearchData $searchData): PaginatorInterface
+    // {
+    //     return $this->paginatorInterface->paginate($query, $searchData->getPage(), 10);
+    // }
+
+
+    // public function getPagerfantaForQuery($query)
+    // {
+    //     return $this->getPaginatorForQuery($query);
+    // }
 
 }

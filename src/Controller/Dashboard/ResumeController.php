@@ -13,7 +13,7 @@ class ResumeController extends AbstractController
     public function index(ResumeRepository $resumeRepository): Response
     {
         $resumes = $resumeRepository->findAll();
-        return $this->render('dashboard/resume/index.html.twig', [
+        return $this->render('dashboard/pages/resume/index.html.twig', [
             'resumes' => $resumes
         ]);
     }

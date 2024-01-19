@@ -17,17 +17,17 @@ class AdminController extends AbstractController
     #[Route('/index', name: 'dashboard_admins_index', methods: ['GET'])]
     public function index(
         AdminRepository $adminRepository, 
-        Request $request
+        Request $request, PaginatorInterface $paginator
         ): Response
     {
         $searchData = new SearchData();
         $form = $this->createForm(SearchType::class, $searchData);
         $form->handleRequest($request);
 
+        $contents = $paginator->paginate($adminRepository->findBy([], ['createdAt' => 'ASC'], 5), 1,2);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $contents = $adminRepository->findBySearch($searchData);
-        }else{
-            $contents = '';
         }
    
         return $this->render('dashboard/pages/admin/index.html.twig', [
@@ -36,8 +36,8 @@ class AdminController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'dashboard_admins_new', methods: ['GET', 'POST'])]
-    public function new(Request $request)
+    #[Route('/add', name: 'dashboard_admins_add', methods: ['GET', 'POST'])]
+    public function add(Request $request)
     {
         // $tutorial = new Tutorial();
         // $form = $this->createForm(TutorialType::class, $tutorial);
