@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Repository\AdminRepository;
 use App\Entity\Traits\TimableTrait;
 use App\Enum\Status;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -39,9 +41,13 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: Types::STRING, enumType: Status::class)]
     private Status $status;
 
+    #[ORM\OneToMany(mappedBy: 'author', targetEntity: Product::class)]
+    private Collection $products;
+
     public function __construct()
     {
         $this->status = Status::Published;
+        $this->products = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -133,6 +139,36 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
     public function setFullname(string $fullname): static
     {
         $this->fullname = $fullname;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Product>
+     */
+    public function getProducts(): Collection
+    {
+        return $this->products;
+    }
+
+    public function addProduct(Product $product): static
+    {
+        if (!$this->products->contains($product)) {
+            $this->products->add($product);
+            $product->setAuthor($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProduct(Product $product): static
+    {
+        if ($this->products->removeElement($product)) {
+            // set the owning side to null (unless already changed)
+            if ($product->getAuthor() === $this) {
+                $product->setAuthor(null);
+            }
+        }
 
         return $this;
     }
